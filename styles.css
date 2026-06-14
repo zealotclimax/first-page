@@ -322,6 +322,40 @@ h1 span {
   line-height: 1.6;
 }
 
+.website-links {
+  position: relative;
+  z-index: 2;
+  align-self: stretch;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 18px 0 auto;
+}
+
+.website-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid rgba(17, 17, 17, 0.15);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.3);
+  font-size: 11px;
+  font-weight: 650;
+  transition: background 220ms ease, border-color 220ms ease, transform 220ms ease;
+}
+
+.website-links a:hover {
+  border-color: rgba(17, 17, 17, 0.35);
+  background: rgba(255, 255, 255, 0.72);
+  transform: translateY(-2px);
+}
+
+.website-links a span {
+  font-size: 12px;
+}
+
 .statement {
   min-height: 85svh;
   display: flex;

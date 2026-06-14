@@ -8,9 +8,16 @@ const spaces = [
   },
   {
     name: "Websites",
-    label: "SOON",
-    description: "Selected digital work, interfaces, and experiments.",
-    url: "https://webs.suntianji.com"
+    label: "VISIT",
+    description: "Explore six websites.",
+    links: [
+      { name: "Webs", url: "https://webs.suntianji.com" },
+      { name: "Web 1", url: "https://web1.suntianji.com" },
+      { name: "Web 2", url: "https://web2.suntianji.com" },
+      { name: "Web 3", url: "https://web3.suntianji.com" },
+      { name: "Web 4", url: "https://web4.suntianji.com" },
+      { name: "Web 5", url: "https://web5.suntianji.com" }
+    ]
   },
   {
     name: "Others",
@@ -22,18 +29,29 @@ const spaces = [
 
 const cards = document.querySelector("#cards");
 
-cards.innerHTML = spaces.map((space, index) => `
-  <a class="card reveal" href="${space.url}">
+cards.innerHTML = spaces.map((space, index) => {
+  const content = `
     <div class="card-top">
       <span>0${index + 1} / ${space.label}</span>
       <span class="card-arrow">&nearr;</span>
     </div>
+    ${space.links ? `
+      <div class="website-links">
+        ${space.links.map(link => `
+          <a href="${link.url}">${link.name}<span>&nearr;</span></a>
+        `).join("")}
+      </div>
+    ` : ""}
     <div class="card-copy">
       <h3>${space.name}</h3>
       <p>${space.description}</p>
     </div>
-  </a>
-`).join("");
+  `;
+
+  return space.links
+    ? `<article class="card card-with-links reveal">${content}</article>`
+    : `<a class="card reveal" href="${space.url}">${content}</a>`;
+}).join("");
 
 document.querySelector("#year").textContent = new Date().getFullYear();
 
